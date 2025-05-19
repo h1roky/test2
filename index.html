@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Илья Третьяков - Автобиография</title>
+    <title>Ілля Третьяков - Автобіографія</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f4f4f4;
             text-align: center;
+            transition: background-color 0.5s ease;
         }
         header {
             background: #333;
@@ -56,29 +57,72 @@
             background: #333;
             color: white;
         }
+        .hidden {
+            display: none;
+        }
+        button {
+            margin: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
-<body>
-    <header>Илья Третьяков</header>
+<body onload="showWelcome()">
+    <header>Ілля Третьяков</header>
     <div class="container">
-        <img src="https://i.imgur.com/vHIWqR4.jpeg" alt="Фото Ильи Третьякова">
+        <img src="https://i.imgur.com/vHIWqR4.jpeg" alt="Фото Іллі Третьякова">
         <h2>Про мене</h2>
         <p>Привіт, мене звати Ілля Третьяков</p>
-        <p>Я учень 11 класу ДОЛІФМП. Полюбляю робити різні моделі, як 3D в комп'ютері</p>
-        <p>так і фізичні з пластиліну, зазвичай це різні персонажі або предмети з моїх</p>
-        <p>улюблених аніме</p>
-        <div class="gallery">
-            <img src="https://i.imgur.com/aMglzQJ.jpeg" alt="Фигурка 1">
-            <img src="https://i.imgur.com/iLWD5Ws.jpeg" alt="Фигурка 2">
-            <img src="https://i.imgur.com/ETie0uf_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="Фигурка 3">
-            <img src="https://i.imgur.com/SXWi2RQ_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="Фигурка 4">
-            <img src="https://i.imgur.com/lDllQRc_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="Фигурка 5">
-            <img src="https://i.imgur.com/jX4QA2I.jpeg" alt="Фигурка 6">
+        <p>Я учень 11 класу ДОЛІФМП. Полюбляю створювати різні моделі — як 3D на комп'ютері,</p>
+        <p>так і фізичні з пластиліну. Зазвичай це персонажі або предмети з моїх улюблених аніме.</p>
+
+        <button onclick="toggleGallery()">Показати/Приховати більше фото</button>
+        <button onclick="changeBackground()">Змінити фон</button>
+
+        <div class="gallery" id="gallery">
+            <img src="https://i.imgur.com/aMglzQJ.jpeg" alt="Фігурка 1">
+            <img src="https://i.imgur.com/iLWD5Ws.jpeg" alt="Фігурка 2">
+            <div class="extra hidden">
+                <img src="https://i.imgur.com/ETie0uf_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="Фігурка 3">
+                <img src="https://i.imgur.com/SXWi2RQ_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="Фігурка 4">
+                <img src="https://i.imgur.com/lDllQRc_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="Фігурка 5">
+                <img src="https://i.imgur.com/jX4QA2I.jpeg" alt="Фігурка 6">
+            </div>
         </div>
-        <h2>Контакты</h2>
+
+        <h2>Контакти</h2>
         <p>Email: tretyakovartyom@gmail.com</p>
         <p>Telegram: @h1rok9</p> 
     </div>
-    <footer>&copy; 2025 Илья Третьяков</footer>
+    <footer>&copy; 2025 Ілля Третьяков</footer>
+
+    <script>
+        function showWelcome() {
+            alert("Ласкаво просимо на мою сторінку!");
+        }
+
+        function toggleGallery() {
+            const extraImages = document.querySelector('.extra');
+            extraImages.classList.toggle('hidden');
+        }
+
+        function changeBackground() {
+            const colors = ['#f4f4f4', '#e0f7fa', '#fff3e0', '#fce4ec', '#e8f5e9'];
+            const current = document.body.style.backgroundColor;
+            let nextColor = colors[Math.floor(Math.random() * colors.length)];
+            while (nextColor === current) {
+                nextColor = colors[Math.floor(Math.random() * colors.length)];
+            }
+            document.body.style.backgroundColor = nextColor;
+        }
+    </script>
 </body>
 </html>
